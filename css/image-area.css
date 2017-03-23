@@ -1,0 +1,20 @@
+.image-container {
+  padding-bottom: 15px;
+}
+
+.image-holder {
+  display: inline-block;
+  position: relative
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+#uploadedImage {
+  vertical-align: bottom;
+}
