@@ -6,11 +6,9 @@ function uploadController(CSSFilterService) {
   this.uploadedImageURL = undefined;
 
   this.uploadImage = function() {
-    console.log("Upload fake");
+    console.log("Fake upload");
 
     this.setImageURL('images/default_image.png');
-    //this.setImageURL('http://lorempixel.com/g/400/200/');
-    //this.setImageURL('http://placehold.it/350x150/D4145A/000000');
   }
 
   this.setImageURL = function(imageURL) {
@@ -19,14 +17,14 @@ function uploadController(CSSFilterService) {
 
   this.gradientSettings = {
     startColor: {
-      color: '#ffffff',
+      color: '#2E3192',
       alpha: 0.6
     },
     endColor: {
-      color: '#000000',
+      color: '#1bffff',
       alpha: 0.35
     },
-    angle: 45
+    angle: 'to top right'
   };
 
   this.filters = function() {

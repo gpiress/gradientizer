@@ -15,7 +15,7 @@ function CSSFilterService() {
     const startRGBA = hexToRgba(startColor.color, startColor.alpha);
     const endRGBA = hexToRgba(endColor.color, endColor.alpha);
 
-    let filter = "linear-gradient(" + angle + 'deg, ' + startRGBA + ', ' + endRGBA + ')';
+    let filter = "linear-gradient(" + angle + ', ' + startRGBA + ', ' + endRGBA + ')';
 
     filters['background'] = filter;
   }
