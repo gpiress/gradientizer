@@ -18,7 +18,11 @@
 .text-overlay {
   position: absolute;
   color: white;
-  -webkit-text-stroke: 1px black;
+  -webkit-text-stroke: 1px white;
+
+  font-weight: bold;
+  font-family: Liberation Sans Bold, sans-serif;
+
   z-index: 1;
 }
 
