@@ -32,4 +32,11 @@
   margin-right: 0;
 
   background-color: #eee;
+
+  border: 1px solid #ddd;
+  border-top: none;
+}
+
+.gradientizr-editor-apply--container {
+  padding-top: 10px;
 }

@@ -24,4 +24,7 @@
 
 #uploadedImage {
   vertical-align: bottom;
+
+  max-width: 1000px;
+  height: auto;
 }

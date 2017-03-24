@@ -1,14 +1,15 @@
 angular.module('gradientizr').controller('indexController', indexController);
 
-indexController.$inject = ['CSSFilterService', 'TextService'];
+indexController.$inject = ['$scope', 'CSSFilterService', 'TextService'];
 
-function indexController(CSSFilterService, TextService) {
+function indexController($scope, CSSFilterService, TextService) {
   this.uploadedImageURL = undefined;
+  $scope.uploadedFile = undefined;
 
   this.uploadImage = function() {
-    console.log("Fake upload");
+    this.setImageURL($scope.uploadedFile);
 
-    this.setImageURL('images/default_image.png');
+    //this.setImageURL('images/default_image.png');
   }
 
   this.setImageURL = function(imageURL) {
