@@ -3,60 +3,145 @@
     <!-- Vendor stylesheets -->
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
 
-    <!-- My own stylesheets -->
+    <!-- gradientizr stylesheets -->
     <link rel="stylesheet" href="css/image-area.css" />
+    <link rel="stylesheet" href="css/editor-menu.css" />
+    <link rel="stylesheet" href="css/text-position.css" />
   </head>
   <body ng-app="gradientizr">
-    <div class="container-fluid" style="padding-top: 20px;" ng-controller="uploadController as uploadCtrl">
+    <div class="container-fluid" style="padding-top: 20px;" ng-controller="indexController as indexCtrl">
+
       <div class="row">
-        <div class="col-md-6 image-container" ng-if="uploadCtrl.uploadedImageURL !== undefined">
+        <div class="col-md-12 image-container" ng-if="indexCtrl.uploadedImageURL !== undefined">
           <div class="image-holder">
-            <div class="image-overlay" ng-style=uploadCtrl.filters()></div>
-            <img ng-src="{{uploadCtrl.uploadedImageURL}}" id="uploadedImage"/>
+            <div class="text-overlay" ng-style="indexCtrl.textStyle()">{{indexCtrl.textContent()}}</div>
+            <div class="image-overlay" ng-style=indexCtrl.filters()></div>
+            <img ng-src="{{indexCtrl.uploadedImageURL}}" id="uploadedImage"/>
           </div>
         </div>
       </div>
+
       <div class="row">
-        <div class="col-md-12">
-          <button ng-click="uploadCtrl.uploadImage()" class="btn btn-primary">
+        <div class="col-xs-12">
+          <button ng-click="indexCtrl.uploadImage()" class="btn btn-primary">
             Upload image
+          </button>
+
+          <button ng-click="indexCtrl.reset()" class="btn btn-default">
+            Clear modifications
           </button>
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-md-12">
-          <h3>Filters</h3>
-          <button class="btn btn-primary" ng-click="uploadCtrl.applyGradient()">Gradient</button>
-        </div>
+      <!-- Menu -->
+      <div class="row gradientizr-menu-container">
+        <div class="col-xs-12">
+          <div class="gradientizr-menu">
 
-        <div class="col-md-6">
-          <h4>Start color</h4>
-          <div class="form-group">
-            <label for="gradient-start-color">RGB color</label>
-            <input type="text" class="form-control" id="gradient-start-color" placeholder="#ffffff"
-                   ng-model="uploadCtrl.gradientSettings.startColor.color">
-          </div>
-          <div class="form-group">
-            <label for="gradient-start-color-alpha">Alpha</label>
-            <input type="text" class="form-control" id="gradient-start-color-alpha" placeholder="0.6"
-                   ng-model="uploadCtrl.gradientSettings.startColor.alpha">
-          </div>
-        </div>
+            <div class="gradientizr-menu-item"
+                 ng-class="{ 'selected': indexCtrl.activeOption() === 'gradient' }"
+                 ng-click="indexCtrl.selectOption('gradient')">
+              <span>Gradient</span>
+            </div>
 
-        <div class="col-md-6">
-          <h4>End color</h4>
-          <div class="form-group">
-            <label for="gradient-end-color">RGB color</label>
-            <input type="text" class="form-control" id="gradient-end-color" placeholder="#ffffff"
-                   ng-model="uploadCtrl.gradientSettings.endColor.color">
-          </div>
-          <div class="form-group">
-            <label for="gradient-end-color-alpha">Alpha</label>
-            <input type="text" class="form-control" id="gradient-end-color-alpha" placeholder="0.3"
-                   ng-model="uploadCtrl.gradientSettings.endColor.alpha">
+            <div class="gradientizr-menu-item"
+                 ng-class="{ 'selected': indexCtrl.activeOption() === 'text' }"
+                 ng-click="indexCtrl.selectOption('text')">
+              <span>Text</span>
+            </div>
           </div>
         </div>
+      </div>
+      <!-- /Menu -->
+
+      <!-- Gradient options -->
+      <div class="row" ng-if="indexCtrl.activeOption() === 'gradient'">
+        <div class="col-xs-12 gradientizr-editor-options-container">
+          <div class="col-xs-6">
+            <h4>Start color</h4>
+            <div class="form-group">
+              <label for="gradient-start-color">RGB color</label>
+              <input type="text" class="form-control" id="gradient-start-color" placeholder="#ffffff"
+                     ng-model="indexCtrl.gradientSettings.startColor.color">
+            </div>
+            <div class="form-group">
+              <label for="gradient-start-color-alpha">Alpha</label>
+              <input type="text" class="form-control" id="gradient-start-color-alpha" placeholder="0.6"
+                     ng-model="indexCtrl.gradientSettings.startColor.alpha">
+            </div>
+          </div>
+
+          <div class="col-xs-6">
+            <h4>End color</h4>
+            <div class="form-group">
+              <label for="gradient-end-color">RGB color</label>
+              <input type="text" class="form-control" id="gradient-end-color" placeholder="#ffffff"
+                     ng-model="indexCtrl.gradientSettings.endColor.color">
+            </div>
+            <div class="form-group">
+              <label for="gradient-end-color-alpha">Alpha</label>
+              <input type="text" class="form-control" id="gradient-end-color-alpha" placeholder="0.3"
+                     ng-model="indexCtrl.gradientSettings.endColor.alpha">
+            </div>
+          </div>
+
+          <div class="col-xs-12">
+            <button class="btn btn-primary" ng-click="indexCtrl.applyGradient()">Apply</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text options -->
+      <div class="row" ng-if="indexCtrl.activeOption() === 'text'">
+        <div class="col-xs-12 gradientizr-editor-options-container">
+          <div class="col-xs-6">
+            <h4>Settings</h4>
+            <div class="form-group">
+              <label for="text-content">Content</label>
+              <input type="text" class="form-control" id="text-content" placeholder="Your text here"
+                     ng-model="indexCtrl.textSettings.content">
+            </div>
+            <div class="form-group">
+              <label for="text-font-size">Font size (px)</label>
+              <input type="number" class="form-control" id="text-font-size" placeholder="36"
+                     ng-model="indexCtrl.textSettings.size">
+            </div>
+          </div>
+
+          <div class="col-xs-4">
+            <h4>Position</h4>
+            <div class="gradientizr-text-position__container">
+              <div class="gradientizr-text-position__item gradientizr-text-position__top-left"
+                   ng-class="{ 'selected': indexCtrl.textSettings.position === 'top left' }"
+                   ng-click="indexCtrl.textSettings.position = 'top left'">
+                <span>top left</span>
+              </div>
+
+              <div class="gradientizr-text-position__item gradientizr-text-position__top-right"
+                   ng-class="{ 'selected': indexCtrl.textSettings.position === 'top right' }"
+                   ng-click="indexCtrl.textSettings.position = 'top right'">
+                <span>top right</span>
+              </div>
+
+              <div class="gradientizr-text-position__item gradientizr-text-position__bottom-left"
+                   ng-class="{ 'selected': indexCtrl.textSettings.position === 'bottom left' }"
+                   ng-click="indexCtrl.textSettings.position = 'bottom left'">
+                <span>bottom left</span>
+              </div>
+
+              <div class="gradientizr-text-position__item gradientizr-text-position__bottom-right"
+                   ng-class="{ 'selected': indexCtrl.textSettings.position === 'bottom right' }"
+                   ng-click="indexCtrl.textSettings.position = 'bottom right'">
+                <span>bottom right</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-12">
+            <button class="btn btn-primary" ng-click="indexCtrl.addText()">Add</button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- vendor scripts -->
@@ -67,6 +152,8 @@
     <script src="js/app.js"></script>
 
     <script src="js/service/cssFilterService.js"></script>
-    <script src="js/controller/uploadController.js"></script>
+    <script src="js/service/textService.js"></script>
+
+    <script src="js/controller/indexController.js"></script>
   </body>
 </html>

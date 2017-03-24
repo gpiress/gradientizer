@@ -1,0 +1,35 @@
+.gradientizr-menu-container {
+  padding-top: 15px;
+}
+
+.gradientizr-menu {
+  display: flex;
+}
+
+.gradientizr-menu-item {
+  padding: 10px;
+  border: solid 1px #ddd;
+  border-right: none;
+  color: black;
+
+  cursor: pointer;
+}
+
+.gradientizr-menu-item:last-child {
+  border-right: solid 1px #ddd;
+}
+
+.gradientizr-menu-item.selected {
+  background-color: #eee;
+  border-bottom: none;
+}
+
+.gradientizr-editor-options-container {
+  padding-left: 0;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  margin-left: 15px;
+  margin-right: 0;
+
+  background-color: #eee;
+}
