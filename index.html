@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="css/image-area.css" />
     <link rel="stylesheet" href="css/editor-menu.css" />
     <link rel="stylesheet" href="css/text-position.css" />
+
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'none';
+        style-src 'self' 'unsafe-inline';
+        img-src 'self' data:;
+        " />
   </head>
   <body ng-app="gradientizr">
     <div class="container-fluid" style="padding-top: 20px;" ng-controller="indexController as indexCtrl">
