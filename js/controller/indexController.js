@@ -8,8 +8,6 @@ function indexController($scope, CSSFilterService, TextService) {
 
   this.uploadImage = function() {
     this.setImageURL($scope.uploadedFile);
-
-    //this.setImageURL('images/default_image.png');
   }
 
   this.setImageURL = function(imageURL) {
@@ -49,9 +47,11 @@ function indexController($scope, CSSFilterService, TextService) {
   }
 
   this.textSettings = {
-    content: '',
-    size: '',
-    position: 'right bottom'
+    content: 'Some text',
+    size: 64,
+    position: 'bottom right',
+    textColor: '#ffffff',
+    outlineColor: '#ffffff'
   }
 
   this.textStyle = function() {
@@ -63,7 +63,7 @@ function indexController($scope, CSSFilterService, TextService) {
   }
 
   this.addText = function() {
-    TextService.set(this.textSettings.content, this.textSettings.size, this.textSettings.position);
+    TextService.set(this.textSettings);
   }
 
   this.reset = function() {

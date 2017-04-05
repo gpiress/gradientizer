@@ -13,6 +13,19 @@ function textService() {
     content = newText;
   }
 
+  function setTextColors(textColor, outlineColor) {
+    if (textColor === undefined || textColor === '') {
+      textColor = '#ffffff';
+    }
+
+    if (outlineColor === undefined || outlineColor === '') {
+      textColor = '#ffffff';
+    }
+
+    style['color'] = textColor;
+    style['-webkit-text-stroke'] = '1px ' + outlineColor;
+  }
+
   function setFontSize(fontSize) {
     if (fontSize === undefined || fontSize === '') {
       fontSize = 36;
@@ -43,12 +56,13 @@ function textService() {
     return content;
   }
 
-  function set(newText, fontSize, position) {
+  function set(settings) {
     clear();
 
-    setContent(newText);
-    setFontSize(fontSize);
-    setPosition(position);
+    setContent(settings.content);
+    setFontSize(settings.size);
+    setTextColors(settings.textColor, settings.outlineColor);
+    setPosition(settings.position);
   }
 
   function getStyle() {

@@ -115,9 +115,19 @@
                      ng-model="indexCtrl.textSettings.content">
             </div>
             <div class="form-group">
-              <label for="text-font-size">Font size (px)</label>
-              <input type="number" class="form-control" id="text-font-size" placeholder="36"
+              <label for="text-font-size">Size (px)</label>
+              <input type="number" class="form-control" id="text-font-size" placeholder="64"
                      ng-model="indexCtrl.textSettings.size">
+            </div>
+            <div class="form-group">
+              <label for="text-font-color">Color</label>
+              <input type="text" class="form-control" id="text-font-color" placeholder="#ffffff"
+                     ng-model="indexCtrl.textSettings.textColor">
+            </div>
+            <div class="form-group">
+              <label for="text-outline-color">Outline color</label>
+              <input type="text" class="form-control" id="text-outline-color" placeholder="#ffffff"
+                     ng-model="indexCtrl.textSettings.outlineColor">
             </div>
           </div>
 
