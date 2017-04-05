@@ -43,7 +43,9 @@ function indexController($scope, CSSFilterService, TextService) {
   }
 
   this.applyGradient = function() {
-    CSSFilterService.gradient(this.gradientSettings.startColor, this.gradientSettings.endColor, this.gradientSettings.angle);
+    CSSFilterService.gradient(this.gradientSettings.startColor,
+                              this.gradientSettings.endColor,
+                              this.gradientSettings.angle);
   }
 
   this.textSettings = {
