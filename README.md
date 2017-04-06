@@ -5,6 +5,8 @@ allow the user to insert text on top of the result.
 
 Both the gradient and the text are customizable!
 
+[Check it live!](https://gpiress.github.io/gradientizer/)
+
 ## Example
 
 Original:
