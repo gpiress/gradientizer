@@ -4,9 +4,13 @@ function CSSFilterService() {
   let filters = {};
 
   function hexToRgba(hexColor, alpha=1) {
-    const r = parseInt(hexColor.slice(1, 3), 16),
-          g = parseInt(hexColor.slice(3, 5), 16),
-          b = parseInt(hexColor.slice(5, 7), 16);
+    let r = parseInt(hexColor.slice(1, 3), 16),
+        g = parseInt(hexColor.slice(3, 5), 16),
+        b = parseInt(hexColor.slice(5, 7), 16);
+
+    if (isNaN(r) || isNaN(g) || isNaN(b)) {
+      r = g = b = 255;
+    }
 
     return 'rgba(' + r + ', ' + g + ', ' + b + ', ' + alpha + ')';
   }
@@ -29,6 +33,7 @@ function CSSFilterService() {
   }
 
   return {
+    hexToRgba: hexToRgba,
     gradient: gradient,
     getFilters: getFilters,
     clear: clear
