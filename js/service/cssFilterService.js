@@ -31,7 +31,7 @@ function CSSFilterService() {
 
   function validColor(color) {
     if (color.match(fullHexFormat) !== null ||
-        color.match(shortHexFormat !== null)) {
+        color.match(shortHexFormat) !== null) {
       return true;
     }
 
