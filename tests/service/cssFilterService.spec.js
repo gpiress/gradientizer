@@ -31,6 +31,24 @@ describe('CSS Filter Service', function() {
       expect(rgbaColor).toEqual('rgba(255, 255, 255, 0.6)');
     });
 
+    it('should properly generate rgba from short hex (#fff)', function() {
+      const hexColor = '#aaa';
+      const alpha = 1;
+
+      const rgbaColor = CSSFilterService.hexToRgba(hexColor, alpha);
+
+      expect(rgbaColor).toEqual('rgba(170, 170, 170, 1)');
+    });
+
+    it('should return white if the hex is mal-formed (#fff11)', function() {
+      const hexColor = '#aaa11';
+      const alpha = 1;
+
+      const rgbaColor = CSSFilterService.hexToRgba(hexColor, alpha);
+
+      expect(rgbaColor).toEqual('rgba(255, 255, 255, 1)');
+    });
+
     it('should default alpha to 1 if not set', function() {
       const hexColor = '#ffffff';
 

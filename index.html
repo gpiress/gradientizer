@@ -69,28 +69,32 @@
         <div class="col-xs-12 gradientizr-editor-options-container">
           <div class="col-xs-6">
             <h4>Start color</h4>
-            <div class="form-group">
-              <label for="gradient-start-color">RGB color</label>
-              <input type="text" class="form-control" id="gradient-start-color" placeholder="#ffffff"
+            <div class="form-group" ng-class="{ 'has-error': !indexCtrl.gradientSettings.startColor.valid }">
+              <label class="control-label"  for="gradient-start-color">RGB color</label class="control-label" >
+              <input type="text" class="form-control" id="gradient-start-color"
+                     placeholder="#ffffff" ng-blur="indexCtrl.validateGradientColor('start')"
                      ng-model="indexCtrl.gradientSettings.startColor.color">
             </div>
             <div class="form-group">
-              <label for="gradient-start-color-alpha">Alpha</label>
-              <input type="text" class="form-control" id="gradient-start-color-alpha" placeholder="0.6"
+              <label class="control-label"  for="gradient-start-color-alpha">Alpha</label class="control-label" >
+              <input type="text" class="form-control" id="gradient-start-color-alpha"
+                     placeholder="0.6"
                      ng-model="indexCtrl.gradientSettings.startColor.alpha">
             </div>
           </div>
 
           <div class="col-xs-6">
             <h4>End color</h4>
-            <div class="form-group">
-              <label for="gradient-end-color">RGB color</label>
-              <input type="text" class="form-control" id="gradient-end-color" placeholder="#ffffff"
+            <div class="form-group" ng-class="{ 'has-error': !indexCtrl.gradientSettings.endColor.valid }">
+              <label class="control-label"  for="gradient-end-color">RGB color</label class="control-label" >
+              <input type="text" class="form-control" id="gradient-end-color"
+                     placeholder="#ffffff" ng-blur="indexCtrl.validateGradientColor('end')"
                      ng-model="indexCtrl.gradientSettings.endColor.color">
             </div>
             <div class="form-group">
-              <label for="gradient-end-color-alpha">Alpha</label>
-              <input type="text" class="form-control" id="gradient-end-color-alpha" placeholder="0.3"
+              <label class="control-label"  for="gradient-end-color-alpha">Alpha</label class="control-label" >
+              <input type="text" class="form-control" id="gradient-end-color-alpha"
+                     placeholder="0.3"
                      ng-model="indexCtrl.gradientSettings.endColor.alpha">
             </div>
           </div>
@@ -112,22 +116,22 @@
           <div class="col-xs-6">
             <h4>Settings</h4>
             <div class="form-group">
-              <label for="text-content">Content</label>
+              <label class="control-label"  for="text-content">Content</label class="control-label" >
               <input type="text" class="form-control" id="text-content" placeholder="Your text here"
                      ng-model="indexCtrl.textSettings.content">
             </div>
             <div class="form-group">
-              <label for="text-font-size">Size (px)</label>
+              <label class="control-label"  for="text-font-size">Size (px)</label class="control-label" >
               <input type="number" class="form-control" id="text-font-size" placeholder="64"
                      ng-model="indexCtrl.textSettings.size">
             </div>
             <div class="form-group">
-              <label for="text-font-color">Color</label>
+              <label class="control-label"  for="text-font-color">Color</label class="control-label" >
               <input type="text" class="form-control" id="text-font-color" placeholder="#ffffff"
                      ng-model="indexCtrl.textSettings.textColor">
             </div>
             <div class="form-group">
-              <label for="text-outline-color">Outline color</label>
+              <label class="control-label"  for="text-outline-color">Outline color</label class="control-label" >
               <input type="text" class="form-control" id="text-outline-color" placeholder="#ffffff"
                      ng-model="indexCtrl.textSettings.outlineColor">
             </div>

@@ -29,11 +29,13 @@ function indexController($scope, CSSFilterService, TextService) {
   this.gradientSettings = {
     startColor: {
       color: '#2E3192',
-      alpha: 0.6
+      alpha: 0.6,
+      valid: true
     },
     endColor: {
       color: '#1bffff',
-      alpha: 0.35
+      alpha: 0.35,
+      valid: true
     },
     angle: 'to top right'
   };
@@ -46,6 +48,19 @@ function indexController($scope, CSSFilterService, TextService) {
     CSSFilterService.gradient(this.gradientSettings.startColor,
                               this.gradientSettings.endColor,
                               this.gradientSettings.angle);
+  }
+
+  this.validateGradientColor = function(startOrEnd) {
+    let color = {};
+    if (startOrEnd === 'start') {
+      color = this.gradientSettings.startColor;
+    } else if (startOrEnd === 'end') {
+      color = this.gradientSettings.endColor;
+    }
+
+    if (color != {}) {
+      color.valid = CSSFilterService.validColor(color.color);
+    }
   }
 
   this.textSettings = {
